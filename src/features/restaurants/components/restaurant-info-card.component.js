@@ -1,16 +1,24 @@
 import React from "react";
-import {RestaurantCard, RestaurantCardCover, Address,Section,SectionEnd,Info,Rating, Icon} from "./restaurant-info-card.styles.js"
+import {
+  RestaurantCard,
+  RestaurantCardCover,
+  Address,
+  Section,
+  SectionEnd,
+  Info,
+  Rating,
+  Icon,
+} from "./restaurant-info-card.styles.js";
 import uuid from "react-native-uuid";
-
 import { SvgXml } from "react-native-svg";
 
 import { Spacer } from "../../../components/spacer/spacer.component.js";
-import {Text} from "../../../components/typography/text.component.js"
+import { Text } from "../../../components/typography/text.component.js";
 
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 
-export const RestaurantInfo = ({ restaurant = {} }) => {
+export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "Some Restaurant",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
@@ -29,11 +37,11 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
       <RestaurantCardCover
         key={name}
         source={{
-          uri: photos[0]
+          uri: photos[0],
         }}
       />
       <Info>
-        <Text variant='label' >{name}</Text>
+        <Text variant="label">{name}</Text>
         <Section>
           <Rating>
             {ratingArray.map(() => (
@@ -42,9 +50,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
           </Rating>
           <SectionEnd>
             {isClosedTemporarily && (
-              <Text variant="error">
-                CLOSED TEMPORARILY
-              </Text>
+              <Text variant="error">CLOSED TEMPORARILY</Text>
             )}
             <Spacer position="left" size="large">
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
